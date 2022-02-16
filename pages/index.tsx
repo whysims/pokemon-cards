@@ -1,7 +1,7 @@
 import { Layout } from "antd";
 import type { NextPage } from "next";
-import { HeaderLayout } from "./components/Header/Header";
-import { LatestCards } from "./components/LatestCards/LatestCards";
+import { HeaderLayout } from "../components/Header/Header";
+import { LatestCards } from "../components/LatestCards/LatestCards";
 
 const Home: NextPage = () => {
   const { Content } = Layout;

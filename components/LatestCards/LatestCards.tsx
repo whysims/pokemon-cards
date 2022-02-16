@@ -25,14 +25,13 @@ export const LatestCards = () => {
       <Row gutter={[16, 26]}>
         {pokemonList &&
           shuffle(pokemonList).map((x: any) => (
-            <Col sm={12} md={8} lg={6}>
+            <Col sm={12} md={8} lg={6} key={x.id}>
               <PokemonCard
                 id={x.id}
                 flavorText={x.flavorText}
                 images={x.images}
                 avg={x.cardmarket.prices.trendPrice}
                 rarity={x.rarity}
-                key={x.id}
               />
             </Col>
           ))}

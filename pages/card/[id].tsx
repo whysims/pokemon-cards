@@ -1,5 +1,5 @@
 import React from "react";
-import { HeaderLayout } from "../components/Header/Header";
+import { HeaderLayout } from "../../components/Header/Header";
 
 export default function PokemonAboutPage() {
   return (
