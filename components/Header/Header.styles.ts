@@ -1,3 +1,5 @@
+/* eslint-disable */
+/* tslint:disable */
 import styled from "@emotion/styled";
 import { Avatar } from "@mui/material";
 

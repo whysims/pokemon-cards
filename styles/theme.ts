@@ -1,6 +1,28 @@
-import { createTheme, Theme } from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles";
 
-export const theme: Theme = createTheme({
+declare module "@mui/material/styles" {
+  interface Theme {
+    colors: {
+      raisinBlack: string;
+      orangeYellow: string;
+      pacificBlue: string;
+      dimGrey: string;
+      culturedWhite: string;
+    };
+  }
+
+  interface ThemeOptions {
+    colors?: {
+      raisinBlack?: string;
+      orangeYellow?: string;
+      pacificBlue?: string;
+      dimGrey?: string;
+      culturedWhite?: string;
+    };
+  }
+}
+
+export const theme = createTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: {
