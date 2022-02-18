@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import { styled } from "@mui/material";
 import { css } from "@emotion/react";
 
 interface RarityProps {
@@ -7,7 +7,14 @@ interface RarityProps {
   rare?: boolean;
 }
 
-export const RarityBadge = styled.div<RarityProps>`
+export const Content = styled("div")`
+  max-width: 250px;
+  max-height: 350px;
+  width: 100%;
+  height: 100%;
+`;
+
+export const RarityBadge = styled("div")<RarityProps>`
   position: absolute;
   top: 5px;
   left: 5px;
@@ -19,7 +26,7 @@ export const RarityBadge = styled.div<RarityProps>`
   border-radius: 14px;
 `;
 
-export const CardContainer = styled.div`
+export const CardContainer = styled("div")`
   border-radius: 14px;
 
   width: 250px;
@@ -33,7 +40,7 @@ export const CardContainer = styled.div`
   cursor: pointer;
 `;
 
-export const PriceBadge = styled.div`
+export const PriceBadge = styled("div")`
   position: absolute;
   top: 5px;
   right: 5px;
@@ -42,7 +49,7 @@ export const PriceBadge = styled.div`
   border-radius: 14px;
 `;
 
-export const BackgroundTest = styled.div<{ card: string; holo?: boolean }>`
+export const BackgroundTest = styled("div")<{ card: string; holo?: boolean }>`
   width: 100%;
   height: 100%;
 
@@ -58,6 +65,8 @@ export const BackgroundTest = styled.div<{ card: string; holo?: boolean }>`
   transform-origin: center;
 
   position: relative;
+
+  border-radius: 13px;
 
   ${({ holo }) =>
     holo &&
@@ -95,6 +104,8 @@ export const BackgroundTest = styled.div<{ card: string; holo?: boolean }>`
         opacity: 0.5;
         filter: brightness(0.5) contrast(1);
         z-index: 1;
+
+        border-radius: 14px;
       }
 
       &:after {
@@ -118,6 +129,8 @@ export const BackgroundTest = styled.div<{ card: string; holo?: boolean }>`
         transition: all 0.33s ease;
         mix-blend-mode: color-dodge;
         opacity: 0.75;
+
+        border-radius: 14px;
       }
     `}
 `;

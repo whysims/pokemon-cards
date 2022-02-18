@@ -5,6 +5,7 @@ import {
   CardContainer,
   PriceBadge,
   RarityBadge,
+  Content,
 } from "./PokemonCard.styles";
 
 interface PokemonCardProps {
@@ -24,33 +25,35 @@ export const PokemonCard = ({
 }: PokemonCardProps) => {
   return (
     <Link href={`/card/${encodeURIComponent(id)}`}>
-      <Tilt
-        style={{
-          borderRadius: 14,
-        }}
-        glareEnable={rarity.includes("Holo")}
-        glarePosition="all"
-      >
-        <CardContainer
-          onClick={() => location.assign(`/card/${encodeURIComponent(id)}`)}
+      <Content>
+        <Tilt
+          style={{
+            borderRadius: 14,
+          }}
+          glareEnable={rarity.includes("Holo")}
+          glarePosition="all"
         >
           <BackgroundTest
             className="cardCover"
             card={image}
             holo={rarity.includes("Holo")}
-          />
-
-          <RarityBadge
-            legend={rarity.includes("LEGEND")}
-            rare={rarity.includes("Rare")}
-            amazing={rarity.includes("Amazing")}
           >
-            {rarity}
-          </RarityBadge>
+            <CardContainer
+              onClick={() => location.assign(`/card/${encodeURIComponent(id)}`)}
+            >
+              <RarityBadge
+                legend={rarity.includes("LEGEND")}
+                rare={rarity.includes("Rare")}
+                amazing={rarity.includes("Amazing")}
+              >
+                {rarity}
+              </RarityBadge>
 
-          <PriceBadge>{avg}</PriceBadge>
-        </CardContainer>
-      </Tilt>
+              <PriceBadge>{avg}</PriceBadge>
+            </CardContainer>
+          </BackgroundTest>
+        </Tilt>
+      </Content>
     </Link>
   );
 };

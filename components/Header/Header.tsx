@@ -6,6 +6,7 @@ import {
   Menu,
   MenuItem,
 } from "@mui/material";
+import Link from "next/link";
 import React from "react";
 import { Navigation, Title, AvatarCustom } from "./Header.styles";
 
@@ -21,13 +22,27 @@ export const HeaderLayout = () => {
 
   return (
     <Navigation>
-      <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
-        <Title>Pokémon DB</Title>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          textAlign: "center",
+          cursor: "pointer",
+        }}
+      >
+        <Link href="/">
+          <Title>Pokémon DB</Title>
+        </Link>
       </Box>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
         <Typography sx={{ minWidth: 100, color: "white" }}>
           Saved Cards
         </Typography>
+        <Link href="/about">
+          <Typography sx={{ minWidth: 100, color: "white", cursor: "pointer" }}>
+            About
+          </Typography>
+        </Link>
         <Tooltip title="Account settings">
           <IconButton
             size="small"
