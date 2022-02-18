@@ -1,48 +1,56 @@
-import { Card } from "antd";
 import Link from "next/link";
 import Tilt from "react-parallax-tilt";
-import { CardContainer, RarityBadge } from "./PokemonCard.styles";
+import {
+  BackgroundTest,
+  CardContainer,
+  PriceBadge,
+  RarityBadge,
+} from "./PokemonCard.styles";
 
 interface PokemonCardProps {
   id: string;
   avg: number;
   rarity: string;
-  images: {
-    large: string;
-    small: string;
-  };
+  image: string;
   flavorText: string;
 }
 
 export const PokemonCard = ({
   id,
   flavorText,
-  images,
+  image,
   avg,
   rarity,
 }: PokemonCardProps) => {
   return (
-    <Tilt glareEnable={rarity.includes("Holo")} glarePosition="all" gyroscope>
-      <CardContainer holo={rarity.includes("Holo")}>
-        <Link href={`/card/${encodeURIComponent(id)}`}>
-          <Card
-            style={{ width: 300 }}
-            bordered={false}
-            cover={<img alt="example" src={images.small} />}
-          />
-        </Link>
-        <RarityBadge
-          legend={rarity.includes("LEGEND")}
-          rare={rarity.includes("Rare")}
-          amazing={rarity.includes("Amazing")}
+    <Link href={`/card/${encodeURIComponent(id)}`}>
+      <Tilt
+        style={{
+          borderRadius: 14,
+        }}
+        glareEnable={rarity.includes("Holo")}
+        glarePosition="all"
+      >
+        <CardContainer
+          onClick={() => location.assign(`/card/${encodeURIComponent(id)}`)}
         >
-          {rarity}
-        </RarityBadge>
-        <div className="pokemon-content">
-          <p>{flavorText}</p>
-          <p>Avg Price: {avg} </p>
-        </div>
-      </CardContainer>
-    </Tilt>
+          <BackgroundTest
+            className="cardCover"
+            card={image}
+            holo={rarity.includes("Holo")}
+          />
+
+          <RarityBadge
+            legend={rarity.includes("LEGEND")}
+            rare={rarity.includes("Rare")}
+            amazing={rarity.includes("Amazing")}
+          >
+            {rarity}
+          </RarityBadge>
+
+          <PriceBadge>{avg}</PriceBadge>
+        </CardContainer>
+      </Tilt>
+    </Link>
   );
 };

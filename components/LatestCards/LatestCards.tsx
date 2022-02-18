@@ -1,15 +1,14 @@
-import { Col, Row, Layout } from "antd";
 import { PokemonTCG } from "pokemon-tcg-sdk-typescript";
 import { shuffle } from "lodash";
 import { useEffect, useState } from "react";
 import { Loading } from "../Loading/Loading";
 import { PokemonCard } from "../PokemonCard/PokemonCard";
 import { Card } from "pokemon-tcg-sdk-typescript/dist/sdk";
+import { Grid } from "@mui/material";
 
 export const LatestCards = () => {
   const [pokemonList, setPokemonList] = useState<Card[]>();
   const [loading, setLoading] = useState(true);
-  const { Content } = Layout;
   useEffect(() => {
     PokemonTCG.findCardsByQueries({
       page: 1,
@@ -22,23 +21,23 @@ export const LatestCards = () => {
   }, []);
 
   return (
-    <Content>
+    <Grid>
       <h1>Latests Cards</h1>
       {loading && <Loading />}
-      <Row gutter={[16, 26]}>
+      <Grid container spacing={3}>
         {pokemonList &&
           shuffle(pokemonList).map((x: any) => (
-            <Col sm={12} md={8} lg={6} key={x.id}>
+            <Grid item xs={12} sm={12} md={6} lg={4} xl={3} key={x.id}>
               <PokemonCard
                 id={x.id}
                 flavorText={x.flavorText}
-                images={x.images}
+                image={x.images.small}
                 avg={x.cardmarket.prices.trendPrice}
                 rarity={x.rarity}
               />
-            </Col>
+            </Grid>
           ))}
-      </Row>
-    </Content>
+      </Grid>
+    </Grid>
   );
 };

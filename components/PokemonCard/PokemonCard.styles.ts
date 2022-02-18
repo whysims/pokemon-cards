@@ -1,14 +1,10 @@
-import { Card } from "antd";
-import styled, { css } from "styled-components";
+import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 
 interface RarityProps {
   legend?: boolean;
   amazing?: boolean;
   rare?: boolean;
-}
-
-interface CardContainerProps {
-  holo?: boolean;
 }
 
 export const RarityBadge = styled.div<RarityProps>`
@@ -23,23 +19,45 @@ export const RarityBadge = styled.div<RarityProps>`
   border-radius: 14px;
 `;
 
-export const CardContainer = styled.div<CardContainerProps>`
+export const CardContainer = styled.div`
   border-radius: 14px;
-  width: 300px;
-  height: 419px;
+
+  width: 250px;
+  height: 350px;
 
   position: relative;
   overflow: hidden;
 
-  transition: transform 0.5s ease, box-shadow 0.2s ease;
+  display: block;
+
+  cursor: pointer;
+`;
+
+export const PriceBadge = styled.div`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: white;
+  padding: 5px;
+  border-radius: 14px;
+`;
+
+export const BackgroundTest = styled.div<{ card: string; holo?: boolean }>`
+  width: 100%;
+  height: 100%;
+
+  background-image: url(${({ card }) => card});
+
+  transition: transform 0.5s ease;
   will-change: transform, filter;
 
   background-color: #040712;
-  background-image: var(--front);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   transform-origin: center;
+
+  position: relative;
 
   ${({ holo }) =>
     holo &&
@@ -68,10 +86,10 @@ export const CardContainer = styled.div<CardContainerProps>`
         background-image: linear-gradient(
           115deg,
           transparent 0%,
-          var(rgb(0, 231, 255)) 25%,
+          rgb(0, 231, 255) 25%,
           transparent 47%,
           transparent 53%,
-          var(rgb(255, 0, 231)) 75%,
+          rgb(255, 0, 231) 75%,
           transparent 100%
         );
         opacity: 0.5;
@@ -102,27 +120,4 @@ export const CardContainer = styled.div<CardContainerProps>`
         opacity: 0.75;
       }
     `}
-
-  .pokemon-content {
-    transition: all 0.3s ease-out;
-
-    position: absolute;
-    opacity: 0;
-    bottom: -500px;
-
-    background: white;
-    border-top-left-radius: 14px;
-    border-top-right-radius: 14px;
-    padding: 15px;
-    width: 300px;
-
-    box-shadow: 0px -6px 20px 0px rgb(0 0 0 / 50%);
-  }
-  &:hover {
-    transform: scale(1.05);
-    .pokemon-content {
-      opacity: 1;
-      bottom: 0px;
-    }
-  }
 `;
