@@ -21,12 +21,12 @@ const About: NextPage = () => {
       </ul>
 
       <p>
-        The api's used as data sources are{" "}
-        <a href="https://pokeapi.co/" target="_blank">
+        The APIs used as data sources are{" "}
+        <a href="https://pokeapi.co/" target="_blank" rel="noreferrer">
           PokeAPI
         </a>{" "}
         and{" "}
-        <a href="https://pokemontcg.io/" target="_blank">
+        <a href="https://pokemontcg.io/" target="_blank" rel="noreferrer">
           Pokemon TCG API
         </a>
       </p>
